@@ -1,0 +1,1 @@
+{"level":"info","time":"2021-01-05T15:40:33.232+0800","caller":"/Users/thooh/Workspace/go/src/github.com/thoohv5/gf/log/impl/zap.go:62","msg":"grpc server:","system":"grpc","span.kind":"server","grpc.service":"user.User","grpc.method":"Info","grpc.time_ms":0.000088935,"grpc.code":"OK"}
