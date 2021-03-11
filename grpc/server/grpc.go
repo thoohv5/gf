@@ -2,6 +2,7 @@ package server
 
 import (
 	"context"
+	"crypto/tls"
 	"net"
 	"net/http"
 	"strings"
@@ -30,8 +31,9 @@ type Server interface {
 }
 
 type Config struct {
-	Network string
-	Address string
+	Network   string
+	Address   string
+	TLSConfig *tls.Config
 }
 
 func NewServer() Server {
@@ -107,8 +109,9 @@ func (s *Grpc) Server(config *Config, registerGrpc RegisterGrpc, registerGrpcHtt
 	}
 
 	httpServer := &http.Server{
-		Addr:    config.Address,
-		Handler: serverHandlerFunc(grpcServer, httpServeMux),
+		Addr:      config.Address,
+		Handler:   serverHandlerFunc(grpcServer, httpServeMux),
+		TLSConfig: config.TLSConfig,
 	}
 	/**
 	http end
