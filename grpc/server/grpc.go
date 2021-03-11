@@ -121,7 +121,7 @@ func (s *Grpc) Server(config *Config, registerGrpc RegisterGrpc, registerGrpcHtt
 	http server
 	grpcServer => httpServer
 	*/
-	if err := httpServer.Serve(conn); nil != err {
+	if err := httpServer.ServeTLS(conn, "", ""); nil != err {
 		return errors.Wrap(err, "http Serve err")
 	}
 
